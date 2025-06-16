@@ -1,0 +1,20 @@
+  #show-pdf-button {
+    background: #CD7F32;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-bottom: 20px;
+  }
+  
+  #show-pdf-button:hover {
+    background: #D4AF37;
+  }
+  
+  #pdf-viewer {
+    width: 100%;
+    border: none;
+    margin-top: 20px;
+  }

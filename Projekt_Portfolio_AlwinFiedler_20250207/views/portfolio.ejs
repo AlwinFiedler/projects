@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Alwin Fiedlers WebDev</title>
+        <link rel="icon" href="images/Foto1.jpg">
+        <link rel="stylesheet" href="styles/style.css">
+        <link rel="stylesheet" href="styles/navs.css">
+        <link rel="stylesheet" href="styles/about.css">
+        <link rel="stylesheet" href="styles/cuvi.css">
+        <link rel="stylesheet" href="styles/docs.css">
+        <link rel="stylesheet" href="styles/form.css">        
+        <script src="/scripts/slider.js" defer></script>
+        <script src="/scripts/main.js" defer></script>
+        <script src="/scripts/form.js" defer></script>
+
+    </head>
+    <body>
+        <header>
+            <nav id="nav-bar">
+                <ul>
+                    <li><a href="#about">Über mich</a></li>
+                    <li><a href="#cuvi">Lebenslauf</a></li>
+                    <li><a href="#docs">Dokumente</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <section id="about">
+                <h1>Über mich</h1>
+                <p>Hallo,<br>hier kommt ein alfatraining-zertifizierter Webentwickler:</p>
+                <div class="slider">                    
+                    <img class="slide-image" src="images/Foto1.jpg" alt="Hier kommen Fotos mit Slideshow">
+                    <img class="slide-image" src="images/Foto2.jpg" alt="Hier kommen Fotos mit Slideshow">
+                </div>
+            </section>
+            <section id="cuvi">
+            <h1>Lebenslauf</h1>
+                <section id="work">
+                    <h2>Arbeitserfahrung</h2>
+                    <ul>
+                        <% document.workExperience.forEach(experience => { %>
+                        <li>
+                            <h3><%= experience.company %> - <%= experience.position %></h3>
+                            <p>in <%= experience.location %></p>
+                            <p>von <%= experience.startDate %> bis <%= experience.endDate %></p>
+                            <p><strong>Tätigkeiten:</strong></p>
+                            <ul>
+                            <% experience.responsibilities.forEach(responsibility => { %>
+                                <li><%= responsibility %></li>
+                            <% }); %>
+                            </ul>
+                        </li>
+                        <% }); %>
+                    </ul>
+                </section>    
+                <section id="education">
+                    <h2>Berufsausbildung</h2>
+                    <ul>
+                        <% document.educationPath.forEach(education => { %>
+                        <li>
+                            <h3><%= education.institution %> - <%= education.degree %></h3>
+                            <p>in <%= education.location %></p>
+                            <p>von <%= education.startDate %> bis <%= education.endDate %></p>
+                        </li>
+                        <% }); %>
+                    </ul>
+                </section>
+            </section>
+            <section id="docs">
+                <h1>Dokumente</h1>
+                <button id="show-pdf-button">Lebenslauf anzeigen</button>                
+                <iframe id="pdf-viewer" src="docs/Lebenslauf_AlwinFiedler.pdf" width="1000" height="1310" style="display: none;"></iframe>
+                <p>Meine Zeugnisse und Zertifikate:</p>
+                <div class="slider">                    
+                    <img class="slide-image" src="images/Zeugnis_AcbisGmbH_AlwinFiedler.png" alt="Zeugnis_AcbisGmbH_AlwinFiedler"> 
+                    <img class="slide-image" src="images/Zertifikat_JavaOCP_AlwinFiedler.png" alt="Zertifikat_JavaOCP_AlwinFiedler">
+                    <img class="slide-image" src="images/Zertifikat_JavaOCA_AlwinFiedler.png" alt="Zertifikat_JavaOCA_AlwinFiedler">
+                    <img class="slide-image" src="images/Zertifikat_AlfatrainingOCA_AlwinFiedler.png" alt="Zertifikat_AlfatrainingOCA_AlwinFiedler">
+                    <img class="slide-image" src="images/Zertifikat_GPM_AlwinFiedler.png" alt="Zertifikat_GPM_AlwinFiedler">
+                    <img class="slide-image" src="images/Zertifikat_ITIL_AlwinFiedler.png" alt="Zertifikat_ITIL_AlwinFiedler">
+                </div>                
+                <div id="imageModal" class="modal">
+                    <span class="close">&times;</span>
+                    <img class="modal-content" id="fullImage">
+                </div>
+            </section>
+            <section id="contact">
+                <h1>Kontakt</h1>
+                <form id="form" action="/submit-form" method="POST">
+                    <h2>Komm und kontaktiere mich:</h2>
+                    <div>
+                        <input type="text" id="username" name="username" class="input-control" placeholder="Name">
+                        <div class="error"></div>
+                    </div>
+                    <div>
+                        <input type="text" id="phonenumber" name="phonenumber" class="input-control" placeholder="Mobilnummer">
+                        <div class="error"></div>
+                    </div>
+                    <div>
+                        <input type="text" id="emailaddress" name="emailaddress" class="input-control" placeholder="E-Mail-Adresse">
+                        <div class="error"></div>
+                    </div>
+                    <h4>Schreibe mir eine Nachricht:</h4>
+                    <div>
+                        <textarea id="textmessage" name="textmessage" class="input-control" maxlength="50"></textarea>
+                        <div class="error"></div>
+                    </div>
+                    <div class="submit-control">
+                        <input type="submit" id="button" value="Formular absenden">
+                    </div>
+                </form>
+            </section>
+        </main>
+        <footer id="footer-bar">         
+            <div id="impressum-text">
+                <strong>Impressum</strong><br>
+                Alwin Fiedler<br>
+                +49 176 37590894<br>
+                alwin.fiedler@web.de<br>                
+                <a href="https://github.com/AlwinFiedler">github.com/AlwinFiedler</a>
+        </footer>
+    </body>
+</html>
